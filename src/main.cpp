@@ -433,7 +433,7 @@ int getInputWCA() {
             } else if (buf == "print") {
                 firstWordWCA = 1;
                 if (!wherretf.empty()) {
-                    for (int j = 0; j < wherretf.size(); j++) {
+                    for (uint j = 0; j < wherretf.size(); j++) {
                         cout << std::dec << "\n   "<<wherretf[j][0] << " // " << wherretf[j][1];
                         if (j>1) {
                             cout << " (" << countWords(wherretf[j][0]) <<" )";
@@ -450,7 +450,7 @@ int getInputWCA() {
                 outfile.open("solutions.txt", ios_base::app);
                 if (!wherretf.empty()) {
                     //outfile<<endl;
-                    for (int j = 0; j < wherretf.size(); j++) {
+                    for (uint j = 0; j < wherretf.size(); j++) {
                         outfile << "\n"<<wherretf[j][0] <<" // "<< wherretf[j][1];
                         if (j > 1) {
                             outfile << " (" << countWords(wherretf[j][0]) << ")";}
@@ -467,7 +467,7 @@ int getInputWCA() {
                 if (!wherretf.empty()) {
                 string url = "https://alg.cubing.net?";
                 string useit;
-                    for (int j = 0; j < wherretf.size(); j++) {
+                    for (uint j = 0; j < wherretf.size(); j++) {
                         useit = replaceStrChar(wherretf[j][0], "'", '-');
                         useit = replaceStrChar(useit, " ", '_');
                         if (j == 0) {
@@ -668,7 +668,7 @@ int getInputWCA() {
                 } else if (buf == "#") {
                     cout << "\n   orientations set to: ";
                     isCheck = 0;
-                    for (int i = 0; i < orientations.size(); i++) {
+                    for (uint i = 0; i < orientations.size(); i++) {
                         cout << orientations[i] << " ";
                     }
                     cout << "\n\n";
@@ -704,7 +704,7 @@ int getInputWCA() {
                 if (isCheck) {
                     cout << "\n   orientations set to: ";
                     isCheck = 0;
-                    for (int i = 0; i < orientations.size(); i++) {
+                    for (uint i = 0; i < orientations.size(); i++) {
                         cout << orientations[i] << " ";
                     }
                     cout << "\n\n";
