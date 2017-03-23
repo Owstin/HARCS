@@ -5,7 +5,7 @@
 #include <stdlib.h>
 #include <fstream>
 #include "headers.h"
-#include <shlobj.h>
+//#include <shlobj.h>
 
 using namespace std;
 
@@ -21,6 +21,7 @@ size_t countWords(std::string s);
 string solutionreducer(string);
 string scramble;
 string inputWCA;
+bool exiting = 0;
 bool firstWordWCA=0;
 bool isScramble2=0;
 bool isSolver2=0;
@@ -48,8 +49,8 @@ void introWCA()
          "      ooooo   ooooo       .o.       ooooooooo.     .oooooo.    .oooooo..o \n"
          "      `888'   `888'      .888.      `888   `Y88.  d8P'  `Y8b  d8P'    `Y8 \n"
          "       888     888      .88888.      888   .d88' 888          Y88bo.      \n"
-         "       888ooooo888     .8' `888.     888ooo88P'  888           `\Y8888o.  \n"
-         "       888     888    .88ooo8888.    888`88b.    888               `\Y88b \n"
+         "       888ooooo888     .8' `888.     888ooo88P'  888           `\\Y8888o.  \n"
+         "       888     888    .88ooo8888.    888`88b.    888               `\\Y88b \n"
          "       888     888   .8'     `888.   888  `88b.  `88b    ooo  oo     .d8P \n"
          "      o888o   o888o o88o     o8888o o888o  o888o  `Y8bood8P'  `8888888P' \n\n\n"
          "                       Here's A Replacement Cube Solver\n\n\n\n\n\n\n";
@@ -103,10 +104,9 @@ void showHelpWCA()
          "   zz\t\tprunes for eoline (D), eo3x2x2 (DL), lb, rb, and zbll\n"
          "   custom\tprunes for the method defined in custom.txt\n"
          "   all\t\tsolves entire cube with set method in single orientation\n"
+         "   exit\t\tcloses HARCS\n"
          "\n   To solve a substep for a pruned method, type the step, as written above."
-         "\n   To apply a generated substep solution, type the number next to it.\n\n"
-         ;
-
+         "\n   To apply a generated substep solution, type the number next to it.\n\n";
 }
 int getInputWCA()
 {
@@ -656,7 +656,10 @@ int getInputWCA()
                         }
                      }
                     cout<<"\n   opening alg.cubing.net in default browser\n\n";
-                    ShellExecute(NULL, "open", url.c_str(), NULL, NULL , SW_SHOWNORMAL );
+                    //cout << "\n   " << url << "\n";
+                    //ShellExecute(NULL, "open", url.c_str(), NULL, NULL , SW_SHOWNORMAL );
+                    string open = string("xdg-open \"").append(url).append("\" > /dev/null");
+					system(open.c_str());
 
                 }
 
@@ -974,6 +977,9 @@ int getInputWCA()
                     }
                     cout<<"\n\n";
                 }
+            } else if (buf == "exit" || buf == "quit" || buf == "q" || buf == "close") {
+                exiting = 1;
+                break;
             }
             else if (firstWordWCA==1)
             {
@@ -994,6 +1000,10 @@ int getInputWCA()
                 }
             }
         }
+        if (exiting != 0) {
+            cout << "\n   bye.\n";
+            break;
+        }
     }
     return 0;
 }
@@ -1001,9 +1011,7 @@ int getInputWCA()
 int main()
 {
     introWCA();
-    while (1)
-    {
-        getInputWCA();
-    }
+    getInputWCA();
+    
     return 0;
 }

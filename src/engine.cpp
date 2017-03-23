@@ -12,6 +12,8 @@
 #include <stdio.h>
 #include <regex>
 #include "headers.h"
+#include <inttypes.h>
+typedef int64_t __int64;
 
 using namespace std;
 
@@ -3513,7 +3515,7 @@ void masks1(int method, int step)
 void prunes1 (int depth, int method, int step, int allowedmoves)
 {
     createmoves();
-    int blockID=1;
+    //int blockID=1;
     bool isalgset=0;
     setups6gen.clear();
     setups6gen.push_back(" ");
