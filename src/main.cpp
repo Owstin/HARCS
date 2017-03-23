@@ -692,7 +692,7 @@ int getInputWCA() {
                 if (buf == "#") {
                     if (isScramble2) {
                         isScramble2 = 0;
-                        dosomething(1 0, scramble, firstdo);
+                        dosomething(1, 0, scramble, firstdo);
                         scramble = "";
                     }
                 } else {
